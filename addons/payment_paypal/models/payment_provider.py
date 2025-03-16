@@ -55,6 +55,8 @@ class PaymentProvider(models.Model):
         :return: None
         :raise UserError: If the base URL is not in HTTPS.
         """
+        # If the base_url seems incorrect it might be because the proxy mode is required.
+        # Double-check the spelling of your configuration file 'proxy_mode = True'.
         base_url = self.get_base_url()
         if 'localhost' in base_url:
             raise UserError(
